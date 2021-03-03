@@ -10,13 +10,18 @@ namespace BuilderingApp.Models
     {
         
         public int ID { get; set; }
+        public double Coordinate { get; set; }
         public string Description { get; set; }
+        public object Topo { get; set; }
         public string Rating { get; set; }
         public string Grade { get; set; }
+        public object Photo { get; set; }
         public string Comments { get; set; }
+        public string User { get; set; }
+        public string Video { get; set; }
     }
     
-    public class RouteDBContext : DbContext
+    public class RouteDBContext3 : DbContext
     {
         public DbSet <Route> Routes { get; set; }
     }

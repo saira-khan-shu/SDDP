@@ -8,7 +8,7 @@ namespace BuilderingApp.Controllers
 {
     public class RouteController : Controller
     {
-        private RouteDBContext db = new RouteDBContext();
+        private RouteDBContext3 db = new RouteDBContext3();
         // GET: Route
         public ActionResult Index()
         {
@@ -39,7 +39,8 @@ namespace BuilderingApp.Controllers
         // POST: Route/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Description,Rating,Grade,Comments")] Route route)
+        public ActionResult Create([Bind(Include = 
+            "ID,Coordinate,Description,Topo,Rating,Grade,Photo,Comments,User,Video")] Route route)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +70,8 @@ namespace BuilderingApp.Controllers
         // POST: Route/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Description,Rating,Grade,Comments")] Route route)
+        public ActionResult Edit([Bind(Include =
+                        "ID,Coordinate,Description,Topo,Rating,Grade,Photo,Comments,User,Video")] Route route)
         {
             if (ModelState.IsValid)
             {
@@ -115,19 +117,5 @@ namespace BuilderingApp.Controllers
         }
         base.Dispose(disposing);
     }
-    //[HttpPost]
-    //public ActionResult Delete(int id, FormCollection collection)
-    //{
-    //    try
-    //    {
-    //        // TODO: Add delete logic here
-
-    //        return RedirectToAction("Index");
-    //    }
-    //    catch
-    //    {
-    //        return View();
-    //    }
-    //}
 }
 }
