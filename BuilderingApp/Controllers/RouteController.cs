@@ -3,17 +3,43 @@ using System.Web.Mvc;
 using BuilderingApp.Models;
 using System.Data.Entity;
 using System.Net;
+using System.Collections.Generic;
 
 namespace BuilderingApp.Controllers
 {
     public class RouteController : Controller
     {
         private RouteDBContext db = new RouteDBContext();
-        // GET: Route
-        public ActionResult Index()
+
+        public ActionResult Index (string Grade1, string searchString)
         {
-            return View(db.Routes.ToList());
-        }
+            var GradeLst = new List<string>();
+
+            var GradeQry = from r in db.Routes
+                           orderby r.Grade
+                           select r.Grade;
+            GradeLst.AddRange(GradeQry.Distinct());
+            ViewBag.Grade1 = new SelectList(GradeLst);
+
+            var routes = from t in db.Routes
+                         select t;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                routes = routes.Where(s => s.Description.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(Grade1))
+            {
+                routes = routes.Where(x => x.Grade == Grade1);
+            }
+            return View(routes);
+
+        } 
+
+        //// GET: Route
+        //public ActionResult Index()
+        //{
+        //    return View(db.Routes.ToList());
+        //}
 
         // GET: Route/Details/5
         public ActionResult Details(int? id)

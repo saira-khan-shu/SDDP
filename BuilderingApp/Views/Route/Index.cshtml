@@ -8,8 +8,17 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm("Index", "Routes", FormMethod.Get))
+    {
+    <p>
+    Grade: @Html.DropDownList("Grade1", "All")
+    Description: @Html.TextBox("SearchString")<br/><br/>
+    <input type="submit" value="Search"/>
+    </p>
+    }
 </p>
 <table class="table">
+
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Coordinate)
