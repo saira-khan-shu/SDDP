@@ -38,7 +38,7 @@ namespace BuilderingApp.Controllers
         //// GET: Route
         //public ActionResult Index()
         //{
-        //    return View(db.Routes.ToList());
+        //    return View(db.Routes.ToList());   //routes to list use for another func to list routes on map 
         //}
 
         // GET: Route/Details/5
@@ -56,9 +56,19 @@ namespace BuilderingApp.Controllers
             return View(route);
         }
 
+
         // GET: Route/Create
-        public ActionResult Create()
+/*        public ActionResult Create()
         {
+            return View();
+        }*/
+
+        public ActionResult Create(string Coordinate)
+        {
+            /*Route route = new Route();
+            route.Coordinate = Coordinate;*/
+            ViewBag.Coordinate = Coordinate;
+            
             return View();
         }
 
