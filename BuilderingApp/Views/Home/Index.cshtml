@@ -64,7 +64,11 @@ map.on('contextmenu', onMapClick); // contextmenu should work as right click on 
 
  @foreach(var route in ViewBag.Routes)
   {
-     <text>var marker = L.marker([@route.Coordinate]).addTo(map);</text>
+     <text>
+        var link = '@Html.ActionLink((string)route.name, "GetRoute", new {id = route.ID, Controller = "Route"})';
+        var marker = L.marker([@route.Coordinate]).addTo(map);
+        marker.bindPopup(link + ' ' + '@route.Grade');
+    </text>
   }
 
 
