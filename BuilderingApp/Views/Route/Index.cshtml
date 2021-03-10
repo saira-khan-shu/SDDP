@@ -45,7 +45,9 @@
             @Html.DisplayNameFor(model => model.User)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Video)
+            <iframe width="420" height="315"
+                    src="@Html.DisplayNameFor(model => model.Video)">
+            </iframe>
         </th>
         <th></th>
     </tr>
@@ -77,9 +79,7 @@
         @Html.DisplayFor(modelItem => item.User)
     </td>
     <td>
-        <iframe width="420" height="315"
-                src="@Html.DisplayFor(modelitem => item.Video)">
-        </iframe>
+        @Html.DisplayFor(modelItem => item.Video)
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
