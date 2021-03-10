@@ -35,6 +35,12 @@ namespace BuilderingApp.Controllers
 
         } 
 
+        public ActionResult GetRoute(int id)
+        {
+            Route route = db.Routes.Find(id);
+            return View(route);
+        }
+
         //// GET: Route
         //public ActionResult Index()
         //{
